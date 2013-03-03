@@ -34,7 +34,8 @@ PRODUCT_PACKAGES += \
     Trebuchet \
     Apollo \
     CMFileManager \
-    CMFileManagerThemes
+    CMFileManagerThemes \
+    Torch
 
 
 ## The gps config appropriate for this device
