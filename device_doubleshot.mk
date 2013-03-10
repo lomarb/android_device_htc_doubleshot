@@ -123,6 +123,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
+# Custom media config for HTC camera
+PRODUCT_COPY_FILES += \
+    device/htc/doubleshot/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    device/htc/doubleshot/configs/media_profiles.xml:system/etc/media_profiles.xml
+    
 ## misc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
