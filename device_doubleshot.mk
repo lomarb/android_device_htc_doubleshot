@@ -119,6 +119,10 @@ PRODUCT_COPY_FILES += \
     device/htc/doubleshot/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
     device/htc/doubleshot/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
+# Camera
+PRODUCT_COPY_FILES += \
+    device/htc/doubleshot/configs/media_profiles.xml:system/etc/media_profiles.xml    
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
