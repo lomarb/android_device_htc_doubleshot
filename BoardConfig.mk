@@ -56,6 +56,10 @@ BOARD_USES_LEGACY_QCOM := true
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := doubleshot
 
+# FM Radio
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+
 # Wifi
 WIFI_DRIVER_MODULE_NAME          := bcmdhd
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
