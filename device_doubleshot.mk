@@ -14,6 +14,15 @@
 # limitations under the License.
 #
 
+### msm8660.mk OVERRIDES ###
+
+# Media configuration
+PRODUCT_COPY_FILES += \
+    device/htc/doubleshot/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    device/htc/doubleshot/configs/audio_policy.conf:system/etc/audio_policy.conf
+
+### OVERRIDES END ###
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
