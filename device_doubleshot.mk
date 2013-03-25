@@ -18,8 +18,7 @@
 
 # Media configuration
 PRODUCT_COPY_FILES += \
-    device/htc/doubleshot/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/doubleshot/configs/audio_policy.conf:system/etc/audio_policy.conf
+    device/htc/doubleshot/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 ### OVERRIDES END ###
 

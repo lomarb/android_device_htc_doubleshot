@@ -25,4 +25,10 @@ for different hardware and product builds. -->
     <!-- The camera removes the focus modes by default when touch-to-focus
 	exists. Use this option to change that behavior -->
     <bool name="wantsFocusModes">true</bool>
+    <!-- HTC Camcorder Mode -->
+    <bool name="needsHTCCamMode">true</bool>
+    <!-- Allows setting video size before recording starts -->
+    <bool name="needsEarlyVideoSize">false</bool>
+    <!-- Use ZSL mode for Qualcomm cameras -->
+    <bool name="enableZSL">false</bool>
 </resources>
