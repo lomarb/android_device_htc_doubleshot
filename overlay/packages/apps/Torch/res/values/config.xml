@@ -21,6 +21,5 @@
      for different hardware and product builds. -->
 <resources>
     <!-- If there is no sysfs-based control mechanism, enable this -->
-    <add-resource type="bool" name="useCameraInterface" />
     <bool name="useCameraInterface">true</bool>
 </resources>
