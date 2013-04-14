@@ -44,30 +44,14 @@ TARGET_KERNEL_SOURCE := kernel/htc/doubleshot
 BUILD_KERNEL := true
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := codefirex-arm-eabi-4.7
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 800
-TARGET_SCREEN_WIDTH := 480
-
-#Hardware
-BOARD_USES_LEGACY_QCOM := true
-
-#Camera
-BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
-
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := doubleshot
 
-# FM Radio
-#BOARD_HAVE_QCOM_FM := true
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-
-# Wifi
-WIFI_DRIVER_MODULE_NAME          := bcmdhd
-WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
-
 # RIL
 BOARD_USE_NEW_LIBRIL_HTC := true
+
+# Wifi
+-include device/htc/msm8660-common/bcmdhd.mk
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true

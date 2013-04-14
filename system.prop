@@ -7,17 +7,12 @@ ro.sf.lcd_density=240
 # radio
 mobiledata.interfaces=rmnet0
 rild.libpath=/system/lib/libhtc_ril.so
+ro.telephony.ril.v3=datacallapn,signalstrength
 
 ro.ril.fast.dormancy.rule=1
 ro.ril.disable.fd.plmn.prefix=23402,23410,23411,23420
 ro.ril.enable.sdr=1
 ro.ril.enable.amr.wideband=0
-
-# improve scrolling
-windowsmgr.max_events_per_sec=150
-ro.max.fling_velocity=12000
-ro.min.fling_velocity=8000
-view.scroll_friction=0
 
 # Modify MMS APN retry timer from 5s to 2s.
 ro.gsm.2nd_data_retry_config=max_retries=3, 2000, 2000, 2000
@@ -28,8 +23,6 @@ ro.ril.gprsclass=12
 ro.ril.hsdpa.category=10  
 ro.ril.hsupa.category=6  
 ro.ril.hsxpa=3
-
-ro.telephony.ril.v3=datacallapn,signalstrength
 
 # Modify MTU from 1500 to 1472 on 3G network
 ro.ril.set.mtu1472=1
@@ -50,9 +43,11 @@ wifi.interface=wlan0
 persist.sys.usb.config=mass_storage,adb
 ro.vold.umsdirtyratio=50
 
-# Sleep
-ro.ril.disable.power.collapse=0
-pm.sleep_mode=1
+# Scrolling tweaks
+windowsmgr.max_events_per_sec=150
+ro.max.fling_velocity=12000
+ro.min.fling_velocity=8000
+view.scroll_friction=0
 
 #Device Info
 ro.device.cpu=Qualcomm MSM8660 Dual-Core 1.5GHz

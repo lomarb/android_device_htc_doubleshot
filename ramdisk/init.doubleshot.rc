@@ -1,35 +1,18 @@
-#
-# Copyright 2012 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 import init.doubleshot.usb.rc
 
-on init
-    # limit 2D GPU clokc to work around random reboots and poweroffs
+on early-init
+    # limit 2D GPU clock to work around random reboots and poweroffs
     write /sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/max_gpuclk 160000000
 
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
 	mkdir /storage/usbdisk 0775 system system
 
-	export EXTERNAL_STORAGE /storage/sdcard0
-
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/sdcard0 /storage/sdcard0
+
+    export EXTERNAL_STORAGE /storage/sdcard0
 
     # load msm8660 firmware so things have time to initialize
     rm /vendor
@@ -41,6 +24,7 @@ on init
     wait /dev/block/mmcblk0p17
     wait /dev/block/mmcblk0p19
     mount vfat /dev/block/mmcblk0p17 /vendor/firmware/misc ro shortname=lower
+
     symlink /vendor/firmware/misc/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/misc/q6.b06 /vendor/firmware/q6.b06
     symlink /vendor/firmware/misc/q6.b05 /vendor/firmware/q6.b05
@@ -65,17 +49,14 @@ on init
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
 
-on init
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
-    mkdir /firmware 0771 system system
-
-on fs
-	mount_all /fstab.doubleshot
+on early-fs
     mkdir /system
     mkdir /data 0771 system system
     mkdir /cache 0770 system cache
     mkdir /devlog 0700 root root
+
+on fs
+    mount_all /fstab.doubleshot
 
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
@@ -84,17 +65,18 @@ on fs
     symlink /system/vendor/firmware/fw_bcmdhd_p2p.bin /vendor/firmware/fw_bcmdhd_p2p.bin
     symlink /system/vendor/firmware/bcm4329.hcd /vendor/firmware/bcm4329.hcd
 
-    # TEMP HACK 
     symlink /system/vendor/lib /vendor/lib
 
     mkdir /vendor/etc 0771 system system
     symlink /system/vendor/etc/audio_effects.conf /vendor/etc/audio_effects.conf
 
-    mount ext4 /dev/block/mmcblk0p22 /system wait ro data=ordered noauto_da_alloc
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount ext4 /dev/block/mmcblk0p23 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p24 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p27 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
+on post-fs-data
+    # double check the perms and set owner
+    chown root root /devlog
+    chmod 0700 /devlog
+
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
 
 on boot
     # for systrace
@@ -217,25 +199,24 @@ on boot
 
 # Services start here
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
-    class main
-    disabled
-    oneshot
-
-# compass/accelerometer daemon
+# Compass/accelerometer daemon
 service akmd /system/bin/akmd
     class core
     user compass
     group compass misc input
 
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
+    class main
+    disabled
+    oneshot
+
 service hciattach /system/bin/brcm_patchram_plus --enable_hci \
         --tosleep 50000 --baudrate 3000000 --use_baudrate_for_download \
-        --enable_lpm --patchram /vendor/firmware/bcm4329.hcd /dev/ttyHS0
+        --patchram /vendor/firmware/bcm4329.hcd /dev/ttyHS0
     class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
-    oneshot
 
 service hdmid /system/bin/hdmid
     class main
