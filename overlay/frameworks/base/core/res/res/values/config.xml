@@ -75,6 +75,7 @@
         <item>321</item>
         <item>641</item>
         <item>1281</item>
+	<item>1951</item>
         <item>2601</item>
     </integer-array>
 
@@ -83,16 +84,17 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>56</item>
-        <item>56</item>
-        <item>56</item>
-        <item>90</item>
-        <item>117</item>
-        <item>142</item>
-        <item>170</item>
-        <item>198</item>
-        <item>227</item>
-        <item>255</item>
+        <item>40</item>
+        <item>40</item>
+        <item>44</item>
+        <item>59</item>
+        <item>79</item>
+        <item>94</item>
+        <item>130</item>
+        <item>155</item>
+        <item>182</item>
+        <item>209</item>
+	<item>255</item>
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
