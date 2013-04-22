@@ -42,7 +42,7 @@ BOARD_KERNEL_CMDLINE := no_console_suspend=1
 TARGET_KERNEL_CONFIG := doubleshot_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/doubleshot
 BUILD_KERNEL := true
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := codefirex-arm-eabi-4.7
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := codefirex-arm-eabi-4.7
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := doubleshot
