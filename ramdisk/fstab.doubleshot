@@ -1,8 +1,9 @@
 # Android fstab file.
 #<src>			<mnt_point>	<type>	<mnt_flags>						<fs_mgr_flags>
 # load these in early-init instead
-#/dev/block/mmcblk0p17	/vendor/firmware/misc	vfat	ro,shortname=lower				wait
-#/dev/block/mmcblk0p19	/vendor/firmware/adsp	vfat	ro,shortname=lower				wait
+
+/dev/block/mmcblk0p17	/vendor/firmware/misc	auto	ro,shortname=lower				wait
+/dev/block/mmcblk0p19	/vendor/firmware/adsp	auto	ro,shortname=lower				wait
 
 /dev/block/mmcblk0p21	/recovery	emmc	defaults						defaults
 /dev/block/mmcblk0p20	/boot		emmc	defaults						defaults
