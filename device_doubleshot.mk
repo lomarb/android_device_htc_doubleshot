@@ -58,10 +58,6 @@ PRODUCT_COPY_FILES += \
     device/htc/doubleshot/recovery/sbin/htcbatt:recovery/root/sbin/htcbatt \
     device/htc/doubleshot/recovery/init.rc:recovery/root/init.rc
 
-# Some misc configeration files
-PRODUCT_COPY_FILES += \
-    device/htc/doubleshot/vold.fstab:system/etc/vold.fstab
-
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
     device/htc/doubleshot/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
