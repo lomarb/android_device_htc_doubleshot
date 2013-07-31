@@ -21,7 +21,7 @@ on early-init
     mkdir /vendor/firmware/misc 0771 system system
     mkdir /vendor/firmware/adsp 0771 system system
 
-    mount_all fstab.doubleshot
+    mount_all /fstab.doubleshot
 
     symlink /vendor/firmware/misc/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/misc/q6.b06 /vendor/firmware/q6.b06
