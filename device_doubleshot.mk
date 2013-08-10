@@ -47,7 +47,8 @@ PRODUCT_COPY_FILES += \
 	device/htc/doubleshot/ramdisk/init.doubleshot.rc:root/init.doubleshot.rc \
 	device/htc/doubleshot/ramdisk/init.doubleshot.usb.rc:root/init.doubleshot.usb.rc \
 	device/htc/doubleshot/ramdisk/ueventd.doubleshot.rc:root/ueventd.doubleshot.rc \
-	device/htc/doubleshot/ramdisk/init.recovery.doubleshot.rc:root/init.recovery.doubleshot.rc
+	device/htc/doubleshot/ramdisk/init.recovery.doubleshot.rc:root/init.recovery.doubleshot.rc \
+	device/htc/doubleshot/ramdisk/remount.doubleshot:root/remount.doubleshot
 
 ## recovery and custom charging
 PRODUCT_COPY_FILES += \
