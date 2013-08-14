@@ -49,7 +49,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := doubleshot
 
 # RIL
 #BOARD_USE_NEW_LIBRIL_HTC := true
-BOARD_USES_LEGACY_RIL := true 
+BOARD_USES_LEGACY_RIL := true
 
 # Wifi
 -include device/htc/msm8660-common/bcmdhd.mk
