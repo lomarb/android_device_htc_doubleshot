@@ -207,5 +207,8 @@
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveBatteryLed">true</bool>
+    
+    <!-- Value used to set keyboard brightness. Doubleshot: 1 = on; 0 = off --> 
+    <integer name="config_keyboardBrightnessSettingDefault">1</integer> 
 
 </resources>
